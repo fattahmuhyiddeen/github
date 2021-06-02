@@ -1,17 +1,20 @@
 import {useEffect, useState} from 'react';
+import {Pagination} from '@material-ui/lab';
+import {TablePagination} from '@material-ui/core';
 import './App.css';
 
-const PER_PAGE = 10;
 
 function App() {
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState({});
   const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
   useEffect(()=>{
     search();
-  },[])
+  },[page,perPage])
+
   const search = async() => {
     // const response = await fetch('https://api.github.com/search/repositories?q=language:js', {
-    const response = await fetch(`https://api.github.com/search/topics?q=js&per_page=${PER_PAGE}&page=${page}`, {
+    const response = await fetch(`https://api.github.com/search/topics?q=js&per_page=${perPage}&page=${page}`, {
       headers: {
         Accept: 'application/vnd.github.mercy-preview+json',
       },
@@ -21,6 +24,7 @@ function App() {
   }
   return (
     <div>
+      <TablePagination page={page} onChangeRowsPerPage={e=>setPerPage(parseInt(e.target.value, 10))} rowsPerPage={perPage} onChangePage={(_,b)=>setPage(b)} count={((result?.total_count)||0)/perPage} color="primary" />
       {result?.items?.map(r => (
         <pre>{JSON.stringify(r, undefined, 2)}</pre>
       ))}
