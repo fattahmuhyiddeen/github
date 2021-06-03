@@ -23,6 +23,7 @@ function App() {
   const search = async () => {
     if (!topic && !language) return;
     setIsLoading(true);
+    setResult({});
     let url = 'https://api.github.com/search/repositories?q=';
     if (topic) url += topic;
     if (topic && language) url += '+';
@@ -36,18 +37,13 @@ function App() {
     search();
   }, [page, perPage]);
 
-  const handleChangeLanguage = (e) => setLanguage(e.target.value);
-  const handleChangeTopic = (e) => setTopic(e.target.value);
-
   return (
     <div>
       <FormControl className={classes.input}>
         <InputLabel shrink>Language</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
           value={language}
-          onChange={handleChangeLanguage}
+          onChange={(e) => setLanguage(e.target.value)}
         >
           <MenuItem value={0}>Search Language</MenuItem>
           <MenuItem value="HTML">HTML</MenuItem>
@@ -58,7 +54,13 @@ function App() {
           <MenuItem value="js">JS</MenuItem>
         </Select>
       </FormControl>
-      <TextField className={classes.input} size="small" label="Search Topic" onChange={handleChangeTopic} value={topic} />
+      <TextField
+        className={classes.input}
+        size="small"
+        label="Search Topic"
+        onChange={(e) => setTopic(e.target.value)}
+        value={topic}
+      />
       <Button
         variant="contained"
         color="secondary"
@@ -76,7 +78,7 @@ function App() {
         onChangePage={(_, v) => setPage(v)}
         count={Math.ceil(((result?.total_count) || 0) / perPage)}
       />
-      {isLoading && <div style={{margin: '1em'}}><CircularProgress /></div>}
+      {isLoading && <div style={{ margin: '1em' }}><CircularProgress /></div>}
       <div className="result">
         {result?.items?.map((r) => <pre>{JSON.stringify(r, undefined, 2)}</pre>)}
       </div>
