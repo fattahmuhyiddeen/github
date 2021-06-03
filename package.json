@@ -17,7 +17,7 @@
   "scripts": {
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false && ./node_modules/.bin/eslint . --fix",
     "lint": "./node_modules/.bin/eslint . --fix",
     "eject": "react-scripts eject"
   },
@@ -45,6 +45,7 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "puppeteer": "^10.0.0"
   }
 }

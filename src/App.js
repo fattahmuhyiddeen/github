@@ -40,7 +40,7 @@ function App() {
   return (
     <div>
       <FormControl className={classes.input}>
-        <InputLabel shrink>Language</InputLabel>
+        <InputLabel shrink>Search Language</InputLabel>
         <Select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
@@ -57,6 +57,7 @@ function App() {
       <TextField
         className={classes.input}
         size="small"
+        id="language"
         label="Search Topic"
         onChange={(e) => setTopic(e.target.value)}
         value={topic}
@@ -64,24 +65,29 @@ function App() {
       <Button
         variant="contained"
         color="secondary"
+        id="search"
         startIcon={<Search />}
         onClick={search}
         disabled={!language && !topic}
       >
         Search
       </Button>
-      <TablePagination
-        page={page}
-        onChangeRowsPerPage={(e) => setPerPage(parseInt(e.target.value, 10))}
-        rowsPerPage={perPage}
-        labelDisplayedRows={({ from, to, count }) => `${from}-${to} of ${count}`}
-        onChangePage={(_, v) => setPage(v)}
-        count={Math.ceil(((result?.total_count) || 0) / perPage)}
-      />
+      {!!result?.total_count && (
+        <TablePagination
+          page={page}
+          onChangeRowsPerPage={(e) => setPerPage(parseInt(e.target.value, 10))}
+          rowsPerPage={perPage}
+          labelDisplayedRows={({ from, to, count }) => `${from}-${to} of ${count}`}
+          onChangePage={(_, v) => setPage(v)}
+          count={Math.ceil(((result?.total_count) || 0) / perPage)}
+        />
+      )}
       {isLoading && <div style={{ margin: '1em' }}><CircularProgress /></div>}
-      <div className="result">
-        {result?.items?.map((r) => <pre>{JSON.stringify(r, undefined, 2)}</pre>)}
-      </div>
+      {!!result?.items && (
+        <div className="result">
+          {result?.items?.map((r) => <pre>{JSON.stringify(r, undefined, 2)}</pre>)}
+        </div>
+      )}
     </div>
   );
 }

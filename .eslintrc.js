@@ -7,6 +7,11 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
   ],
+  globals: {
+    test: 'writable',
+    expect: 'writable',
+    describe: 'writable',
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
