@@ -23,6 +23,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'no-alert': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': 'off',
   },

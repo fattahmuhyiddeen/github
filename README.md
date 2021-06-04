@@ -8,3 +8,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. In another terminal, run `npm test`
 
 # Compromises / Shortcuts
+
+1. Due to limited amount of time, this project does not abide by SOLID principle. The
