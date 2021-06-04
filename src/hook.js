@@ -1,6 +1,16 @@
 import { useEffect, useState } from 'react';
 
 export default () => {
+  const [history, setHistory] = useState([]);
+
+  useEffect(() => {
+    try {
+      setHistory(JSON.parse(localStorage.getItem('history')));
+    } catch (e) {
+      alert('Fail to load search history from local storage');
+    }
+  }, []);
+
   const [isLoading, setIsLoading] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [result, setResult] = useState({});
@@ -8,6 +18,22 @@ export default () => {
   const [topic, setTopic] = useState('');
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
+
+  useEffect(() => {
+    if (result?.items?.length) {
+      const newHistory = history || [];
+      newHistory.unshift({
+        timestamp: (new Date()).toISOString(), language, topic, data: result.items,
+      });
+      setHistory(newHistory);
+    }
+  }, [result]);
+
+  useEffect(() => {
+    if (history?.length) {
+      localStorage.setItem('history', JSON.stringify(history));
+    }
+  }, [history]);
 
   const search = async () => {
     if (!topic && !language) return;
@@ -20,7 +46,7 @@ export default () => {
       const response = await fetch(`${url}&per_page=${perPage}&page=${page}`);
       setResult(await response.json());
     } catch (e) {
-      alert(JSON.stringify(e));
+      alert('Fail to get result');
       setResult({});
     }
     setIsLoading(false);
@@ -46,5 +72,6 @@ export default () => {
     search,
     isAdmin,
     setIsAdmin,
+    history,
   };
 };

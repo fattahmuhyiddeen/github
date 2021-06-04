@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 
-describe('Contact Form', () => {
-  test('Can submit contact form', async () => {
+describe('Can search', () => {
+  test('Can search', async () => {
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     await page.goto('http://localhost:3000/');

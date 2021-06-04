@@ -1,4 +1,13 @@
 .result {
   overflow-y: scroll;
-  height: 80vh;
+  height: 60vh;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  align-items: center;
 }

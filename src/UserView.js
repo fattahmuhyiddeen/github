@@ -3,6 +3,7 @@ import {
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
+import Card from './Card';
 import config from './config';
 
 const useStyles = makeStyles(() => ({
@@ -15,6 +16,7 @@ export default (props) => {
   const { hook } = props;
   return (
     <>
+      <h3>User View</h3>
       <FormControl className={classes.input}>
         <InputLabel shrink>{hook.language === 0 ? '' : 'Language'}</InputLabel>
         <Select value={hook.language} onChange={(e) => hook.setLanguage(e.target.value)}>
@@ -53,7 +55,7 @@ export default (props) => {
       {hook.isLoading && <div style={{ margin: '1em' }}><CircularProgress /></div>}
       {!!hook.result?.items && (
       <div className="result">
-        {hook.result?.items?.map((r) => <pre>{JSON.stringify(r, undefined, 2)}</pre>)}
+        {hook.result?.items?.map((r) => <Card data={r} />)}
       </div>
       )}
     </>
