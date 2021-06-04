@@ -24,6 +24,7 @@ module.exports = {
   ],
   rules: {
     'no-alert': 'off',
+    'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': 'off',
   },

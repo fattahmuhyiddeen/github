@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [result, setResult] = useState({});
   const [language, setLanguage] = useState(0);
   const [topic, setTopic] = useState('');
@@ -43,5 +44,7 @@ export default () => {
     setPage,
     setPerPage,
     search,
+    isAdmin,
+    setIsAdmin,
   };
 };
