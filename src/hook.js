@@ -22,8 +22,11 @@ export default () => {
   useEffect(() => {
     if (result?.items?.length) {
       const newHistory = history || [];
+      const parameters = {};
+      if (language) parameters.language = language;
+      if (topic) parameters.topic = topic;
       newHistory.unshift({
-        timestamp: (new Date()).toISOString(), language, topic, data: result.items,
+        timestamp: (new Date()).toISOString(), parameters, page, results: result.items,
       });
       setHistory(newHistory);
     }

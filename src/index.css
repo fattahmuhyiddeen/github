@@ -9,5 +9,20 @@
 
 .row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.row > * {
+  margin-right: 2em;
+}
+
+.version {
+  opacity: 0.3;
+  margin-right: 2em;
+}
+
+.small-title {
+  text-decoration: underline;
+  font-weight: bold;
+  margin-bottom: 0.5em;
 }

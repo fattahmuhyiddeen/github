@@ -27,6 +27,7 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'no-alert': 'off',
+    'no-plusplus': 'off',
     'no-param-reassign': 'off',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',

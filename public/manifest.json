@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Github Indexer",
+  "name": "Github Indexer with Admin report",
   "icons": [
     {
       "src": "favicon.ico",
