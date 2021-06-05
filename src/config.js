@@ -1,4 +1,4 @@
-const languages = ['HTML', 'Java', 'JavaScript', 'Swift', 'Kotlin', 'Objectice-C', 'C'];
+const languages = ['HTML', 'Java', 'Rust', 'Go', 'Python', 'JavaScript', 'Swift', 'Kotlin', 'Ruby', 'C'];
 
 export default {
   languages,

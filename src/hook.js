@@ -29,14 +29,9 @@ export default () => {
         timestamp: (new Date()).toISOString(), parameters, page, results: result.items,
       });
       setHistory(newHistory);
+      localStorage.setItem('history', JSON.stringify(newHistory));
     }
   }, [result]);
-
-  useEffect(() => {
-    if (history?.length) {
-      localStorage.setItem('history', JSON.stringify(history));
-    }
-  }, [history]);
 
   const search = async () => {
     if (!topic && !language) return;
