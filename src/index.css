@@ -17,6 +17,10 @@
   margin-right: 2em;
 }
 
+.center {
+  justify-content: center;
+}
+
 .version {
   opacity: 0.3;
   margin-right: 2em;
@@ -26,4 +30,11 @@
   text-decoration: underline;
   font-weight: bold;
   margin-bottom: 0.5em;
+}
+
+.loading {
+  margin: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

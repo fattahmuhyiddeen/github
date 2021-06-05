@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Grid, Switch } from '@material-ui/core';
+import { Grid, Switch, Typography } from '@material-ui/core';
 import { VictoryPie, VictoryTheme, VictoryLabel } from 'victory';
 
 export default (props) => {
@@ -27,7 +27,7 @@ export default (props) => {
   topLanguage.sort((a, b) => b.value - a.value);
   return (
     <>
-      <h3>Admin View</h3>
+      <Typography variant="h5" component="h5">Admin View</Typography>
 
       <div className="row">
         <div>
