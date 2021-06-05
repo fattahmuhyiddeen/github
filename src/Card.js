@@ -26,8 +26,8 @@ export default (props) => {
   const classes = useStyles();
 
   return (
-    <a onClick={() => window.open(data.html_url, '_blank')} className="pointer">
-      <Card className={classes.root}>
+    <div onClick={() => window.open(data.html_url, '_blank')} className="card-container">
+      <Card className={classes.root} variant="outlined">
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>{data.language}</Typography>
           <Typography variant="h5" component="h2">{data.full_name}</Typography>
@@ -38,6 +38,6 @@ export default (props) => {
           <Typography variant="body2" component="p">{data.description}</Typography>
         </CardContent>
       </Card>
-    </a>
+    </div>
   );
 };

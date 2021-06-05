@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import {
-  Grid, Switch,
-} from '@material-ui/core';
+import { Grid, Switch } from '@material-ui/core';
+import { VictoryPie, VictoryTheme, VictoryLabel } from 'victory';
 
 export default (props) => {
   const { hook } = props;
@@ -41,21 +40,21 @@ export default (props) => {
         </div>
         <div>
           <div className="small-title">Top 5 topics</div>
-          {topTopic.slice(0, 5).map((t) => (
-            <div className="row">
-              <div>{t.text}</div>
-              <div>{t.value}</div>
-            </div>
-          ))}
+          <VictoryPie
+            theme={VictoryTheme.material}
+            height={200}
+            labelComponent={<VictoryLabel angle={45} />}
+            data={topTopic.slice(0, 5).map((t) => ({ y: t.value, label: t.text }))}
+          />
         </div>
         <div>
           <div className="small-title">Top 5 languages</div>
-          {topLanguage.slice(0, 5).map((t) => (
-            <div className="row">
-              <div>{t.text}</div>
-              <div>{t.value}</div>
-            </div>
-          ))}
+          <VictoryPie
+            theme={VictoryTheme.material}
+            labelComponent={<VictoryLabel angle={45} />}
+            height={200}
+            data={topLanguage.slice(0, 5).map((t) => ({ y: t.value, label: t.text }))}
+          />
         </div>
       </div>
       <hr />
